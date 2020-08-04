@@ -280,7 +280,9 @@ void    print_status_body(t_vars *vars, t_philo *philo, t_status status, char *p
 	int				philo_no;
 
 	philo_no = philo->p_idx + 1;
-	time = get_time() - philo->start_time;
+	if ((sem_wait(vars->print) == -1))
+		ft_error("error: sem_wait\n", 1);
+	time = get_time() - philo->start_time; // 여기가 문제였네;
 	if ((sem_wait(vars->someone_died) == -1))
 		ft_error("error: sem_wait\n", 1);
 	if (vars->flag_died)
@@ -291,8 +293,6 @@ void    print_status_body(t_vars *vars, t_philo *philo, t_status status, char *p
 	}
 	if ((sem_post(vars->someone_died) == -1))
 		ft_error("error: sem_post\n", 1);
-	if ((sem_wait(vars->print) == -1))
-		ft_error("error: sem_wait\n", 1);
 	ft_putnbr(time);
 	ft_putstr_fd(" ", 1);
 	ft_putnbr(philo_no);
@@ -341,13 +341,15 @@ int     taken_fork_and_eat(t_vars *vars, t_philo *philo)
 	if ((sem_wait(vars->eats) == -1))
 		ft_error("error: sem_wait\n", 1);
 	philo->last_eat_time = get_time();
+	print_status(vars, philo, EATING);
 	if ((sem_post(vars->eats) == -1))
 		ft_error("error: sem_post\n", 1);
-	print_status(vars, philo, EATING);
 	ft_usleep(vars->t_eat);
 	if ((sem_wait(vars->putdown) == -1))
 		ft_error("error: sem_wait\n", 1);
-	if ((sem_post(vars->forks) == -1) || (sem_post(vars->forks) == -1))
+	if ((sem_post(vars->forks) == -1))
+		ft_error("error: sem_wait\n", 1);
+	if ((sem_post(vars->forks) == -1))
 		ft_error("error: sem_wait\n", 1);
 	if ((sem_post(vars->putdown) == -1))
 		ft_error("error: sem_post\n", 1);
@@ -401,7 +403,7 @@ void    *monitoring(void *v_philo)
 		}
 		if ((sem_post(vars->eats) == -1))
 			ft_error("error: sem_wait\n", 1);
-		ft_usleep(5);
+		ft_usleep(2000);
 	}
 	return (philo);
 }
@@ -418,13 +420,13 @@ int create_philo_even(t_vars * vars, unsigned long start_time)
 		vars->philo[j].n_eat = 0;
 		vars->philo[j].start_time = start_time;
 		vars->philo[j].last_eat_time = vars->philo[j].start_time;
-		if (pthread_create(&vars->philo[j].thread, NULL, &philosophing, &vars->philo[j]))
+		if (pthread_create(&vars->philo[j].thread, NULL, &philosophing, &vars->philo[j]) != 0)
 			return (ft_error("Error: can not create pthread", 0));
-		if (pthread_detach((vars->philo[j].thread)))
+		if (pthread_detach((vars->philo[j].thread)) != 0)
 			return (ft_error("Error: can not deatch pthread", 0));
-		if (pthread_create(&vars->philo[j].m_thread, NULL, &monitoring, &vars->philo[j]))
+		if (pthread_create(&vars->philo[j].m_thread, NULL, &monitoring, &vars->philo[j]) != 0)
 			return (ft_error("Error: can not create pthread", 0));
-		if (pthread_detach((vars->philo[j].m_thread)))
+		if (pthread_detach((vars->philo[j].m_thread)) != 0)
 			return (ft_error("Error: can not deatch pthread", 0));
 		++i;
 	}
@@ -443,13 +445,13 @@ int create_philo_odd(t_vars * vars, unsigned long start_time)
 		vars->philo[j].n_eat = 0;
 		vars->philo[j].start_time = start_time;
 		vars->philo[j].last_eat_time = vars->philo[j].start_time;
-		if (pthread_create(&vars->philo[j].thread, NULL, &philosophing, &vars->philo[j]))
+		if (pthread_create(&vars->philo[j].thread, NULL, &philosophing, &vars->philo[j]) != 0)
 			return (ft_error("Error: can not create pthread", 0));
-		if (pthread_detach((vars->philo[j].thread)))
+		if (pthread_detach((vars->philo[j].thread)) != 0)
 			return (ft_error("Error: can not deatch pthread", 0));
-		if (pthread_create(&vars->philo[j].m_thread, NULL, &monitoring, &vars->philo[j]))
+		if (pthread_create(&vars->philo[j].m_thread, NULL, &monitoring, &vars->philo[j]) != 0)
 			return (ft_error("Error: can not create pthread", 0));
-		if (pthread_detach((vars->philo[j].m_thread)))
+		if (pthread_detach((vars->philo[j].m_thread)) != 0)
 			return (ft_error("Error: can not deatch pthread", 0));
 		++i;
 	}
@@ -469,13 +471,7 @@ int     create_philo(t_vars *vars)
 		return (0);
 	return (1);
 }
-int     free_struct(void *s)
-{
-	if (s)
-		free(s);
-	s = 0;
-	return (1);
-}
+
 
 int     free_all(char *str, int ret)
 {
@@ -517,10 +513,10 @@ int     main(int argc, char **argv)
 		if ((sem_wait(vars->someone_died) == -1))
 			return (free_all("error: sem_wait\n", -1));
 		if (vars->flag_died == 1)
-			return (free_all(0, 0));
+			return (ft_unlink(1));
 		if ((sem_post(vars->someone_died) == -1))
 			return (free_all("error: sem_post\n", -1));
-		ft_usleep(5);
+		ft_usleep(10);
 	}
 	if (vars->flag_died == 0)
 		ft_putstr_fd("Every philosopher ate enough!\n", 1);

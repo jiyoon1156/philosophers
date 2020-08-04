@@ -341,7 +341,7 @@ int	taken_fork_and_eat(t_vars *vars, t_philo *philo)
 		return (0);
 	return (1);
 }
-
+// ㅠ 
 void *philosophing(void *v_philo)
 {
 	t_vars *vars;
@@ -359,7 +359,8 @@ void *philosophing(void *v_philo)
 	}
 	if ((sem_wait(vars->alive) == -1))//삶과 죽음을 주관하는 함수를 lock
 		ft_error("error: sem_wait\n", 1);
-	vars->n_alive -= 1;//먹어야 하는 최소횟수 다 채우고 죽음(죽을 때 되어서 죽었다)
+	// vars->n_alive--;
+	vars->n_alive -= 1;
 	if ((sem_post(vars->alive) == -1))//삶과 죽음을 주관하는 함수를 lock 해제
 		ft_error("error: sem_post\n", 1);
 	return (philo);
@@ -388,7 +389,7 @@ void *monitoring(void *v_philo)
 		}
 		if ((sem_post(vars->eats) == -1))//먹는 스레드 unlock
 			ft_error("error: sem_post\n", 1);
-		ft_usleep(5);//모니터링 하는 주기
+		ft_usleep(200);//모니터링 하는 주기
 	}
 	return (philo);
 }
@@ -512,9 +513,9 @@ int	main(int argc, char **argv)
 			return (free_all(0, 0));
 		if ((sem_post(vars->someone_died) == -1))
 			return (free_all("error: sem_wait\n", -1));
-		ft_usleep(5);
+		ft_usleep(100);
 	}
-	//putstr_fd로 쓰는 이유??
+	//putstr_fd로 쓰는 이유??이걸 쓰지 않으면 error:sem_wait, post 이런게 뜬다.
 	if (vars->flag_died == 0)//먹어야하는 최소횟수 다 채우면 종료
 		ft_putstr_fd("Every philosopher ate enough!\n", 1);
 	return(free_all(0, 0));
