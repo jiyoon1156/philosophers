@@ -48,7 +48,7 @@ typedef enum		e_status
 int				ft_strlen(char *s);
 void			ft_putchar(char c);
 int				ft_error(char *str);
-void			ft_putnbr(int n);
+void			ft_putnbr(long n);
 void			ft_putstr(char *str);
 char			*ft_strdup(const char *s1);
 int				ft_atoi(const char *str);
