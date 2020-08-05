@@ -45,13 +45,12 @@ int		init(int argc, char **argv)
 	vars->t_die = ft_atoi(argv[2]);
 	vars->t_eat = ft_atoi(argv[3]);
 	vars->t_sleep = ft_atoi(argv[4]);
+	vars->n_must_eat = -1; //n_must_eat 왜 플래그를 세우는 지 잘 이해가 안되네???
 	if (argc == 6)
 	{
 		if ((vars->n_must_eat = ft_atoi(argv[5])) <= 0)
 			return (0);
 	}
-	else
-		vars->n_must_eat = -1; //n_must_eat 왜 플래그를 세우는 지 잘 이해가 안되네???
 	if (vars->n_philo < 2)
 		return (0);
 	if (vars->t_die < 0 || vars->t_eat < 0 || vars->t_sleep < 0)
