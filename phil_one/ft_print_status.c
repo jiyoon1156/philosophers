@@ -1,16 +1,5 @@
 #include "phil_one.h"
 
-unsigned long	get_time(void)
-{
-	struct timeval tv;
-
-	if (gettimeofday(&tv, 0))
-		return (0);
-	//miliseconds(1000ms == 1sec)로 표현
-	//sec-km / ms-m / microsec(usec)-mm
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
-}
-
 void			print_status_body(t_vars *vars, t_philo *philo, t_status status, char *phrase)
 {
 	unsigned long	time;
@@ -55,21 +44,6 @@ int				print_status(t_vars *vars, t_philo *philo, t_status status)
 		return (0);
 	print_status_body(vars, philo, status, phrase);
 	return (1);
-}
-
-void			ft_usleep(unsigned long time)
-{
-	unsigned long start;
-	unsigned long time_elapsed;
-
-	start = get_time();
-	while (1)
-	{
-		time_elapsed = get_time() - start;
-		if (time_elapsed >= time)
-			break ;
-		usleep(1);
-	}
 }
 
 int				taken_fork_and_eat(t_vars *vars, t_philo *philo)
