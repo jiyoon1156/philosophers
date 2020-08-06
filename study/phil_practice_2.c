@@ -414,55 +414,55 @@ void    *monitoring(void *v_philo)
 	return (philo);
 }
 
-int create_philo_even(t_vars * vars, unsigned long start_time)
-{
-	int i;
-	int j;
+// int create_philo_even(t_vars * vars, unsigned long start_time)
+// {
+// 	int i;
+// 	int j;
 
-	i = 0;
-	while ((j = 2 * i) < vars->n_philo)
-	{
-		vars->philo[j].p_idx = j;
-		vars->philo[j].n_eat = 0;
-		vars->philo[j].start_time = start_time;
-		vars->philo[j].last_eat_time = vars->philo[j].start_time;
-		if (pthread_create(&vars->philo[j].thread, NULL, &philosophing, &vars->philo[j]) != 0)
-			return (ft_error("Error: can not create pthread", 0));
-		if (pthread_detach((vars->philo[j].thread)) != 0)
-			return (ft_error("Error: can not deatch pthread", 0));
-		if (pthread_create(&vars->philo[j].m_thread, NULL, &monitoring, &vars->philo[j]) != 0)
-			return (ft_error("Error: can not create pthread", 0));
-		if (pthread_detach((vars->philo[j].m_thread)) != 0)
-			return (ft_error("Error: can not deatch pthread", 0));
-		++i;
-	}
-	return (1);
-}
+// 	i = 0;
+// 	while ((j = 2 * i) < vars->n_philo)
+// 	{
+// 		vars->philo[j].p_idx = j;
+// 		vars->philo[j].n_eat = 0;
+// 		vars->philo[j].start_time = start_time;
+// 		vars->philo[j].last_eat_time = vars->philo[j].start_time;
+// 		if (pthread_create(&vars->philo[j].thread, NULL, &philosophing, &vars->philo[j]) != 0)
+// 			return (ft_error("Error: can not create pthread", 0));
+// 		if (pthread_detach((vars->philo[j].thread)) != 0)
+// 			return (ft_error("Error: can not deatch pthread", 0));
+// 		if (pthread_create(&vars->philo[j].m_thread, NULL, &monitoring, &vars->philo[j]) != 0)
+// 			return (ft_error("Error: can not create pthread", 0));
+// 		if (pthread_detach((vars->philo[j].m_thread)) != 0)
+// 			return (ft_error("Error: can not deatch pthread", 0));
+// 		++i;
+// 	}
+// 	return (1);
+// }
 
-int create_philo_odd(t_vars * vars, unsigned long start_time)
-{
-	int i;
-	int j;
+// int create_philo_odd(t_vars * vars, unsigned long start_time)
+// {
+// 	int i;
+// 	int j;
 
-	i = 0;
-	while ((j = 2 * i + 1) < vars->n_philo)
-	{
-		vars->philo[j].p_idx = j;
-		vars->philo[j].n_eat = 0;
-		vars->philo[j].start_time = start_time;
-		vars->philo[j].last_eat_time = vars->philo[j].start_time;
-		if (pthread_create(&vars->philo[j].thread, NULL, &philosophing, &vars->philo[j]) != 0)
-			return (ft_error("Error: can not create pthread", 0));
-		if (pthread_detach((vars->philo[j].thread)) != 0)
-			return (ft_error("Error: can not deatch pthread", 0));
-		if (pthread_create(&vars->philo[j].m_thread, NULL, &monitoring, &vars->philo[j]) != 0)
-			return (ft_error("Error: can not create pthread", 0));
-		if (pthread_detach((vars->philo[j].m_thread)) != 0)
-			return (ft_error("Error: can not deatch pthread", 0));
-		++i;
-	}
-	return (1);
-}
+// 	i = 0;
+// 	while ((j = 2 * i + 1) < vars->n_philo)
+// 	{
+// 		vars->philo[j].p_idx = j;
+// 		vars->philo[j].n_eat = 0;
+// 		vars->philo[j].start_time = start_time;
+// 		vars->philo[j].last_eat_time = vars->philo[j].start_time;
+// 		if (pthread_create(&vars->philo[j].thread, NULL, &philosophing, &vars->philo[j]) != 0)
+// 			return (ft_error("Error: can not create pthread", 0));
+// 		if (pthread_detach((vars->philo[j].thread)) != 0)
+// 			return (ft_error("Error: can not deatch pthread", 0));
+// 		if (pthread_create(&vars->philo[j].m_thread, NULL, &monitoring, &vars->philo[j]) != 0)
+// 			return (ft_error("Error: can not create pthread", 0));
+// 		if (pthread_detach((vars->philo[j].m_thread)) != 0)
+// 			return (ft_error("Error: can not deatch pthread", 0));
+// 		++i;
+// 	}
+// 	return (1);
+// }
 
 int     create_philo(t_vars *vars)
 {
