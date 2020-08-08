@@ -5,32 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:33:05 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/06 20:33:06 by jhur             ###   ########.fr       */
+/*   Created: 2020/08/08 14:59:43 by jhur              #+#    #+#             */
+/*   Updated: 2020/08/08 14:59:44 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phil_one.h"
+#include "phil_three.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
+	int		len;
 	int		i;
-	int		length;
-	char	*result;
+	char	*temp;
 
-	length = 0;
-	while (s1[length])
-		length++;
-	if (!(result = (char *)malloc(sizeof(char) * (length + 1))))
+	len = 0;
+	while (s[len] != '\0')
+		++len;
+	temp = (char *)malloc(sizeof(char) * (len + 1));
+	if (temp == 0)
 		return (0);
 	i = 0;
-	while (i < length)
+	while (i < len)
 	{
-		result[i] = s1[i];
-		i++;
+		temp[i] = s[i];
+		++i;
 	}
-	result[i] = '\0';
-	return (result);
+	temp[i] = '\0';
+	return (temp);
 }
 
 int		ft_atoi(const char *str)
