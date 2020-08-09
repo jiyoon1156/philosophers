@@ -127,15 +127,14 @@ option - 0 또는 아래의 상수의 조합으로 설정됩니다. 
 
 return vaule
 
-- 자식 프로세스가 정상적으로 종료되었다면 TRUE(이 값은 1이고)
-
+- 자식 프로세스가 정상적으로 종료되었다면 TRUE
 **[WEXITSTATUS](https://www.joinc.co.kr/modules/moniwiki/wiki.php/manSearch?google=none&name=WEXITSTATUS)(status)**
 
 [exit](https://www.joinc.co.kr/modules/moniwiki/wiki.php/manSearch?google=none&name=exit)()를 호출하기 위한 인자나 return 값이 설정되고 종료된 자식의 반환 코드의 최하위 8비트를 평가한다. 이 매크로는 정상정료 - [WIFEXITED](https://www.joinc.co.kr/modules/moniwiki/wiki.php/manSearch?google=none&name=WIFEXITED)(status) - 일때만 평가된다.
 
 return value
 
-- 자식 프로세스가 정상 종료되었을 때 반환한 값 (1이라는 뜻인듯?)
+- 자식 프로세스가 정상 종료되었을 때 반환한 값 (exit code 값이 담김)
 
 file descriptor
 
