@@ -6,11 +6,11 @@
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 14:28:30 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/08 14:30:05 by jhur             ###   ########.fr       */
+/*   Updated: 2020/08/10 21:05:05 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phil_three.h"
+#include "philo_three.h"
 
 void	*monitoring(void *v_philo)
 {

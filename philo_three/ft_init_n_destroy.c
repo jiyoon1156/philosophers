@@ -5,12 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/08 14:10:48 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/08 14:12:38 by jhur             ###   ########.fr       */
+/*   Created: 2020/08/08 14:30:12 by jhur              #+#    #+#             */
+/*   Updated: 2020/08/10 21:05:08 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phil_two.h"
+#include "philo_three.h"
+
+int		ft_unlink(int ret)
+{
+	if ((sem_unlink("/forks") == -1))
+		ft_error("error: sem_unlink\n", 1);
+	if ((sem_unlink("/eats") == -1))
+		ft_error("error: sem_unlink\n", 1);
+	if ((sem_unlink("/pickup") == -1))
+		ft_error("error: sem_unlink\n", 1);
+	if ((sem_unlink("/putdown") == -1))
+		ft_error("error: sem_unlink\n", 1);
+	if ((sem_unlink("/print") == -1))
+		ft_error("error: sem_unlink\n", 1);
+	if ((sem_unlink("/print_error") == -1))
+		ft_error("error: sem_unlink\n", 1);
+	if ((sem_unlink("/alive") == -1))
+		ft_error("error: sem_unlink\n", 1);
+	if ((sem_unlink("/someone_died") == -1))
+		ft_error("error: sem_unlink\n", 1);
+	return (ret);
+}
 
 void	clean_shm(void)
 {
@@ -73,27 +94,6 @@ int		init(int argc, char **argv)
 	if (!(init_semaphore(vars)))
 		return (0);
 	return (1);
-}
-
-int		ft_unlink(int ret)
-{
-	if ((sem_unlink("/forks") == -1))
-		ft_error("error: sem_unlink\n", 1);
-	if ((sem_unlink("/eats") == -1))
-		ft_error("error: sem_unlink\n", 1);
-	if ((sem_unlink("/pickup") == -1))
-		ft_error("error: sem_unlink\n", 1);
-	if ((sem_unlink("/putdown") == -1))
-		ft_error("error: sem_unlink\n", 1);
-	if ((sem_unlink("/print") == -1))
-		ft_error("error: sem_unlink\n", 1);
-	if ((sem_unlink("/print_error") == -1))
-		ft_error("error: sem_unlink\n", 1);
-	if ((sem_unlink("/alive") == -1))
-		ft_error("error: sem_unlink\n", 1);
-	if ((sem_unlink("/someone_died") == -1))
-		ft_error("error: sem_unlink\n", 1);
-	return (ret);
 }
 
 int		free_all(char *str, int ret)

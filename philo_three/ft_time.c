@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:57 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/06 20:32:59 by jhur             ###   ########.fr       */
+/*   Created: 2020/08/08 14:57:41 by jhur              #+#    #+#             */
+/*   Updated: 2020/08/10 21:05:16 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phil_one.h"
+#include "philo_three.h"
 
 unsigned long	get_time(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
 
-	if (gettimeofday(&tv, 0))
+	if (gettimeofday(&tv, NULL))
 		return (0);
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }

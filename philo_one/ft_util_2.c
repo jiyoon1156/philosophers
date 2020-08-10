@@ -6,11 +6,11 @@
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 20:33:05 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/06 20:33:06 by jhur             ###   ########.fr       */
+/*   Updated: 2020/08/10 21:03:26 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phil_one.h"
+#include "philo_one.h"
 
 char	*ft_strdup(const char *s1)
 {

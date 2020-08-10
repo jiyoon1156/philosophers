@@ -6,11 +6,11 @@
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 14:00:11 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/08 14:09:16 by jhur             ###   ########.fr       */
+/*   Updated: 2020/08/10 21:03:35 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phil_two.h"
+#include "philo_two.h"
 
 void	*philosophing(void *v_philo)
 {

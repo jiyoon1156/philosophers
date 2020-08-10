@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:33:02 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/08 13:56:44 by jhur             ###   ########.fr       */
+/*   Created: 2020/08/08 14:15:18 by jhur              #+#    #+#             */
+/*   Updated: 2020/08/10 21:04:29 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phil_one.h"
+#include "philo_two.h"
 
 int		ft_strlen(char *s)
 {
-	int i;
+	int	count;
 
-	i = 0;
-	while (s[i] != '\0')
-		++i;
-	return (i);
+	count = 0;
+	while (s[count] != '\0')
+		++count;
+	return (count);
 }
 
 void	ft_putchar(char c)
@@ -27,10 +27,9 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int		ft_error(char *str)
+void	ft_putstr_fd(char *str, int fd)
 {
-	write(2, str, ft_strlen(str));
-	return (0);
+	write(fd, str, ft_strlen(str));
 }
 
 void	ft_putnbr(long n)
@@ -50,9 +49,4 @@ void	ft_putnbr(long n)
 	}
 	else
 		ft_putchar(nb + '0');
-}
-
-void	ft_putstr(char *str)
-{
-	write(1, str, ft_strlen(str));
 }

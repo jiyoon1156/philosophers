@@ -6,11 +6,11 @@
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 20:32:46 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/08 13:56:00 by jhur             ###   ########.fr       */
+/*   Updated: 2020/08/10 21:03:20 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phil_one.h"
+#include "philo_one.h"
 
 void			print_status_body(t_vars *vars, t_philo *philo,
 t_status status, char *phrase)

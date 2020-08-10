@@ -1,4 +1,4 @@
-NAME = phil_one
+NAME = philo_one
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 

@@ -6,11 +6,11 @@
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 15:10:12 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/08 15:12:28 by jhur             ###   ########.fr       */
+/*   Updated: 2020/08/10 21:04:24 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phil_two.h"
+#include "philo_two.h"
 
 int			ft_error(char *str, int ret)
 {
