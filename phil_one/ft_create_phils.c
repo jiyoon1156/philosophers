@@ -43,7 +43,7 @@ void	*monitoring(void *v_philo)
 	while (1)
 	{
 		pthread_mutex_lock(&vars->eats[philo->p_idx]);
-		if (get_time() - philo->last_eat_time > (unsigned long)vars->t_die)
+		if (get_time() - philo->last_eat_time > (unsigned long)vars->t_die && vars->n_alive != 0)
 		{
 			print_status(vars, philo, DIED);
 			pthread_mutex_lock(&vars->someone_died);
@@ -51,7 +51,7 @@ void	*monitoring(void *v_philo)
 			pthread_mutex_unlock(&vars->someone_died);
 		}
 		pthread_mutex_unlock(&vars->eats[philo->p_idx]);
-		ft_usleep(5);
+		ft_usleep(1000);
 	}
 }
 
