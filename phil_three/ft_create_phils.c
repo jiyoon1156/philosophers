@@ -30,7 +30,7 @@ void	*monitoring(void *v_philo)
 		}
 		if ((sem_post(vars->eats) == -1))
 			ft_error("error: sem_wait\n", 1);
-		ft_usleep(2000);
+		ft_usleep(5);
 	}
 	return (philo);
 }
