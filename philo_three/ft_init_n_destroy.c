@@ -6,7 +6,7 @@
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 14:30:12 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/10 21:05:08 by jhur             ###   ########.fr       */
+/*   Updated: 2020/08/11 11:07:54 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		init(int argc, char **argv)
 		if ((vars->n_must_eat = ft_atoi(argv[5])) <= 0)
 			return (0);
 	}
-	if (vars->n_philo < 2)
+	if (vars->n_philo < 1)
 		return (0);
 	if (vars->t_die < 0 || vars->t_eat < 0 || vars->t_sleep < 0)
 		return (0);

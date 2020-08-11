@@ -6,7 +6,7 @@
 /*   By: jhur <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 20:32:37 by jhur              #+#    #+#             */
-/*   Updated: 2020/08/10 21:03:17 by jhur             ###   ########.fr       */
+/*   Updated: 2020/08/11 11:05:26 by jhur             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	init(int argc, char **argv)
 	}
 	else
 		vars->n_must_eat = -1;
-	if (vars->n_philo < 2)
+	if (vars->n_philo < 1)
 		return (0);
 	if (vars->t_die < 0 || vars->t_eat < 0 || vars->t_sleep < 0)
 		return (0);
