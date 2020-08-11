@@ -66,7 +66,7 @@ int		init(int argc, char **argv)
 		if ((vars->n_must_eat = ft_atoi(argv[5])) <= 0)
 			return (0);
 	}
-	if (vars->n_philo < 2)
+	if (vars->n_philo < 1)
 		return (0);
 	if (vars->t_die < 0 || vars->t_eat < 0 || vars->t_sleep < 0)
 		return (0);
