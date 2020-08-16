@@ -43,7 +43,8 @@ void	*monitoring(void *v_philo)
 	while (1)
 	{
 		pthread_mutex_lock(&vars->eats[philo->p_idx]);
-		if (get_time() - philo->last_eat_time > (unsigned long)vars->t_die && vars->n_alive != 0)
+		//if (get_time() - philo->last_eat_time > (unsigned long)vars->t_die && vars->n_alive != 0)
+		if (get_time() - philo->last_eat_time > (unsigned long)vars->t_die)
 		{
 			print_status(vars, philo, DIED);
 			pthread_mutex_lock(&vars->someone_died);
